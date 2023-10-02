@@ -24,9 +24,9 @@ public class Web3Config {
     @Bean
     public Web3j connectToEthereum() {
         System.out.println("Connecting to Ethereum ...");
-        Web3j web3j = Web3j.build(new HttpService("http://127.0.0.1:8545/"));
+//        Web3j web3j = Web3j.build(new HttpService("http://127.0.0.1:8545/"));
 //        Web3j web3j = Web3j.build(new HttpService("https://goerli.infura.io/v3/" + environment.getProperty("api.infuraKey")));
-//        Web3j web3j = Web3j.build(new HttpService("https://sepolia.infura.io/v3/" + environment.getProperty("api.infuraKey")));
+        Web3j web3j = Web3j.build(new HttpService("https://sepolia.infura.io/v3/" + environment.getProperty("api.infuraKey")));
         System.out.println("Successfully connected to Ethereum");
         return web3j;
     }
@@ -71,7 +71,7 @@ public class Web3Config {
     }
 
     private Credentials createCredentials(){
-//        return Credentials.create(environment.getProperty("api.ownerPrivateKey"));
-        return Credentials.create(environment.getProperty("api.localAccountPrivateKey"));
+        return Credentials.create(environment.getProperty("api.userPrivateKey"));
+//        return Credentials.create(environment.getProperty("api.localAccountPrivateKey"));
     }
 }
